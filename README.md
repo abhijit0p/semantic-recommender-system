@@ -1,123 +1,185 @@
-🚀 Semantic Recommendation System using Embeddings + ML Ranking
+# 🚀 Semantic Recommendation System (Embeddings + ML Ranking)
 
-📌 Overview
+## 📌 Overview
 
-This project implements a semantic recommendation system that goes beyond keyword matching by leveraging:
-Sentence embeddings for semantic understanding
-FAISS for fast vector search
-Machine learning for ranking
-The system retrieves relevant content even when there is no direct keyword overlap.
+This project implements a **semantic recommendation system** that retrieves and ranks content using:
 
-❓ Problem
+- Sentence embeddings for semantic understanding  
+- FAISS for fast vector search  
+- Machine Learning (Logistic Regression) for ranking  
 
-Traditional keyword-based systems fail to capture intent.
+Unlike keyword-based systems, it can surface relevant results even when **no exact word match exists**.
+
+---
+
+## ❓ Problem
+
+Traditional search systems rely on keyword matching and fail to capture intent.
 
 Example:
+
 Query: "cooking show"
 
-A keyword system struggles to match:
-"MasterChef India"
-"Street Food Stories" because there is no direct word overlap.
+Keyword systems struggle to match:
 
-💡 Solution
+- MasterChef India  
+- Street Food Stories  
 
-This system uses a two-stage architecture:
+because there is **no direct lexical overlap**.
 
-Query → Embedding → FAISS → Candidate Retrieval → ML Ranking → Results
+---
 
-🏗️ Architecture
-1. Embeddings (Semantic Understanding)
-Model: sentence-transformers/all-MiniLM-L6-v2
-Converts text into dense vectors
+## 💡 Solution
 
-2. Retrieval (FAISS)
-Efficient nearest-neighbor search
-Retrieves top-N candidates based on vector similarity
+We use a **two-stage recommendation pipeline**:
 
-3. Feature Engineering
+Query → Embedding → FAISS → Candidate Retrieval → Feature Extraction → ML Ranking → Top-K Results
+
+---
+
+## 🏗️ Architecture
+
+### 1️⃣ Embeddings
+- Model: sentence-transformers/all-MiniLM-L6-v2  
+- Converts text into dense vectors  
+- Captures semantic meaning beyond keywords  
+
+### 2️⃣ Candidate Retrieval (FAISS)
+- Fast Approximate Nearest Neighbor search  
+- Retrieves top-N candidates based on vector similarity  
+
+### 3️⃣ Feature Engineering
+
 Each candidate is scored using:
-Similarity score (embedding distance)
-Category match (intent alignment)
-Lexical overlap (exact word match, stopword-filtered)
 
-4. ML Ranking
-Model: Logistic Regression
-Learns optimal weighting of signals
-Outputs probability of relevance
+- Similarity Score → semantic relevance  
+- Category Match → intent alignment  
+- Lexical Overlap → exact word match (stopword filtered)  
 
-🔍 Example
+### 4️⃣ ML Ranking
+
+- Model: Logistic Regression  
+- Learns optimal weighting of signals  
+- Outputs probability of relevance  
+
+---
+
+## 🔍 Example
+
 Query: "cooking show"
 
 Recommendations:
-- Italian Cooking Masterclass
-- MasterChef India
-- Street Food Stories
-- Healthy Recipes
-- Vegan Cooking Guide
+- Italian Cooking Masterclass  
+- MasterChef India  
+- Street Food Stories  
+- Healthy Recipes  
+- Vegan Cooking Guide  
 
-🧠 Key Improvements
-✅ Multi-intent query handling
-("food travel show" → cooking + travel)
-✅ Stopword filtering
-("show", "series" no longer distort overlap)
-✅ Learned ranking instead of manual weights
-✅ Larger candidate pool improves precision
+---
 
-📊 Evaluation
+## ⚙️ Key Improvements & Iterations
+
+- Fixed category leakage (cartoons appearing in cooking results)  
+- Controlled lexical overlap using stopword filtering  
+- Added multi-intent query handling  
+- Improved evaluation to remove misleading perfect scores  
+
+---
+
+## 📊 Evaluation
+
 Metric: Precision@5
 
-Query	Precision@5
-food travel show	1.00
-kids learning videos	1.00
-healthy lifestyle	1.00
-family show	0.40
-funny series	0.00
-action adventure	0.00
-Average Precision@5: ~0.57
+| Query | Precision@5 |
+|------|------------|
+| food travel show | 1.00 |
+| kids learning videos | 1.00 |
+| healthy lifestyle | 1.00 |
+| family show | 0.00 |
+| funny series | 0.00 |
+| action adventure | 0.00 |
 
-📉 Observations
-Performs well for structured and domain-aligned queries
-Struggles with:
-abstract queries ("funny series")
-unknown intents ("action adventure")
+Average Precision@5: ~0.50
 
-🧠 Key Learnings
-Embeddings capture semantic similarity, not intent
-Candidate pool size strongly impacts ranking quality
-Labels define model behavior
-Evaluation can be misleading if not designed carefully
-Combining:
-semantic signals
-structured signals
-lexical signals
-→ gives best results
+---
 
-⚠️ Limitations
-No user personalization
-Synthetic training data (no real user clicks)
-Limited category coverage
-No intent classification layer
-No entity understanding (e.g., "Spartan" event)
+## 📉 Observations
 
-🚀 Future Improvements
-Add user embeddings (personalization)
-Replace logistic regression with learning-to-rank model
-Add intent classification layer
-Expand dataset and categories
-Integrate real interaction data (CTR, clicks)
+- Performs well for structured and domain-aligned queries  
+- Struggles with abstract or unseen queries  
 
-▶️ How to Run
-1. Install dependencies
+---
+
+## 🧠 Key Learnings
+
+- Embeddings capture meaning, not intent  
+- Feature engineering is critical  
+- Labels define model behavior  
+- Evaluation can be misleading  
+- Candidate pool size impacts precision  
+
+---
+
+## ⚠️ Limitations
+
+- No user personalization  
+- Synthetic training data  
+- Limited category coverage  
+- No intent classification  
+- No entity understanding  
+
+---
+
+## 🚀 Future Improvements
+
+- Add personalization  
+- Use learning-to-rank models  
+- Expand dataset  
+- Add intent classification  
+- Use real user interaction data  
+
+---
+
+## ▶️ How to Run
+
+```bash
 pip install -r requirements.txt
-2. Train ranking model
 python src/train_ranker.py
-3. Run recommendations
-python src/recommend.py
-4. Run evaluation
+python src/recommend.py "cooking show"
 python src/evaluate.py
+```
 
-📌 Tech Stack
-Python
-Sentence Transformers
-FAISS
-Scikit-learn
+---
+
+## 📁 Project Structure
+
+semantic-recommender-system/
+├── data/
+│   └── content.json
+├── src/
+│   ├── embed.py
+│   ├── index.py
+│   ├── recommend.py
+│   ├── train_ranker.py
+│   ├── evaluate.py
+├── model.pkl
+├── requirements.txt
+├── README.md
+
+---
+
+## 🛠️ Tech Stack
+
+- Python  
+- Sentence Transformers  
+- FAISS  
+- Scikit-learn  
+- NumPy  
+
+---
+
+## 🎯 Final Note
+
+Semantic similarity alone is not enough — combining signals and proper evaluation is key.
+
+---
