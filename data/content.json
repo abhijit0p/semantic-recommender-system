@@ -1,0 +1,218 @@
+[
+  {
+    "id": 1,
+    "title": "MasterChef India",
+    "description": "Cooking competition and recipes",
+    "category": "cooking"
+  },
+  {
+    "id": 2,
+    "title": "Baking Basics",
+    "description": "Learn baking cakes and pastries",
+    "category": "cooking"
+  },
+  {
+    "id": 3,
+    "title": "HIIT Workout",
+    "description": "High intensity gym training",
+    "category": "fitness"
+  },
+  {
+    "id": 4,
+    "title": "Yoga for Beginners",
+    "description": "Relaxation and flexibility",
+    "category": "fitness"
+  },
+  {
+    "id": 5,
+    "title": "Europe Travel Guide",
+    "description": "Explore top destinations",
+    "category": "travel"
+  },
+  {
+    "id": 6,
+    "title": "Mountain Backpacking",
+    "description": "Adventure travel experience",
+    "category": "travel"
+  },
+  {
+    "id": 7,
+    "title": "Kids Cartoon Show",
+    "description": "Fun animated stories",
+    "category": "kids"
+  },
+  {
+    "id": 8,
+    "title": "Superhero Adventures",
+    "description": "Action packed animation",
+    "category": "kids"
+  },
+  {
+    "id": 9,
+    "title": "Healthy Recipes",
+    "description": "Vegetarian cooking ideas",
+    "category": "cooking"
+  },
+  {
+    "id": 10,
+    "title": "Street Food Stories",
+    "description": "Food documentary series",
+    "category": "cooking"
+  },
+  {
+    "id": 11,
+    "title": "Italian Cooking Masterclass",
+    "description": "Learn authentic Italian dishes",
+    "category": "cooking"
+  },
+  {
+    "id": 12,
+    "title": "Quick Breakfast Recipes",
+    "description": "Easy meals to start your day",
+    "category": "cooking"
+  },
+  {
+    "id": 13,
+    "title": "Advanced Pastry Techniques",
+    "description": "Professional baking skills",
+    "category": "cooking"
+  },
+  {
+    "id": 14,
+    "title": "Home Workout Routine",
+    "description": "Fitness training without equipment",
+    "category": "fitness"
+  },
+  {
+    "id": 15,
+    "title": "Strength Training Basics",
+    "description": "Build muscle effectively",
+    "category": "fitness"
+  },
+  {
+    "id": 16,
+    "title": "Disney Cartoon Classics",
+    "description": "Popular animated kids stories",
+    "category": "kids"
+  },
+  {
+    "id": 17,
+    "title": "Animated Animal Adventures",
+    "description": "Fun cartoon series for kids",
+    "category": "kids"
+  },
+  {
+    "id": 18,
+    "title": "Backpacking Southeast Asia",
+    "description": "Travel across Thailand and Vietnam",
+    "category": "travel"
+  },
+  {
+    "id": 19,
+    "title": "Luxury Europe Tours",
+    "description": "Premium travel experiences",
+    "category": "travel"
+  },
+  {
+    "id": 20,
+    "title": "Street Food Around the World",
+    "description": "Global food exploration",
+    "category": "cooking"
+  },
+  {
+    "id": 21,
+    "title": "Indian Home Cooking",
+    "description": "Traditional Indian meals",
+    "category": "cooking"
+  },
+  {
+    "id": 22,
+    "title": "Vegan Cooking Guide",
+    "description": "Plant-based recipes",
+    "category": "cooking"
+  },
+  {
+    "id": 23,
+    "title": "Grilling Masterclass",
+    "description": "BBQ and grilling techniques",
+    "category": "cooking"
+  },
+  {
+    "id": 24,
+    "title": "Dessert Specials",
+    "description": "Sweet dishes and desserts",
+    "category": "cooking"
+  },
+  {
+    "id": 25,
+    "title": "Cardio Workout Plan",
+    "description": "Improve stamina and endurance",
+    "category": "fitness"
+  },
+  {
+    "id": 26,
+    "title": "Yoga for Flexibility",
+    "description": "Stretching and balance exercises",
+    "category": "fitness"
+  },
+  {
+    "id": 27,
+    "title": "Bodyweight Training",
+    "description": "Exercises without equipment",
+    "category": "fitness"
+  },
+  {
+    "id": 28,
+    "title": "HIIT Advanced",
+    "description": "High intensity interval training",
+    "category": "fitness"
+  },
+  {
+    "id": 29,
+    "title": "Cartoon Comedy Show",
+    "description": "Funny animated series",
+    "category": "kids"
+  },
+  {
+    "id": 30,
+    "title": "Superhero Kids Adventures",
+    "description": "Young heroes saving the world",
+    "category": "kids"
+  },
+  {
+    "id": 31,
+    "title": "Animated Fairy Tales",
+    "description": "Classic kids stories",
+    "category": "kids"
+  },
+  {
+    "id": 32,
+    "title": "Learning with Cartoons",
+    "description": "Educational kids animation",
+    "category": "kids"
+  },
+  {
+    "id": 33,
+    "title": "Asia Travel Guide",
+    "description": "Explore Asian countries",
+    "category": "travel"
+  },
+  {
+    "id": 34,
+    "title": "Budget Travel Hacks",
+    "description": "Travel cheap and smart",
+    "category": "travel"
+  },
+  {
+    "id": 35,
+    "title": "Road Trip Adventures",
+    "description": "Travel by road across regions",
+    "category": "travel"
+  },
+  {
+    "id": 36,
+    "title": "Island Destinations",
+    "description": "Best islands to visit",
+    "category": "travel"
+  }
+]
