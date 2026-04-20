@@ -1,30 +1,38 @@
 from recommend import recommend, detect_categories
 
-def is_relevant(query, item):
-    categories = detect_categories(query)
+STOPWORDS = {"show", "series", "video", "videos"}
 
-    # strong signal: category match
-    if categories and item.get("category") in categories:
+def is_relevant(query, item, query_cats=None):
+    # Avoid recomputing categories
+    if query_cats is None:
+        query_cats = detect_categories(query)
+
+    title = item["title"].lower()
+
+    # 🔹 1. Strong signal: category match
+    if query_cats and item.get("category") in query_cats:
         return 1
 
-    # fallback: lexical signal
-    q_words = set(query.lower().split())
-    t_words = set(item["title"].lower().split())
+    # 🔹 2. Fallback: lexical overlap (filtered)
+    q_words = set(query.lower().split()) - STOPWORDS
+    t_words = set(title.split())
 
     overlap = q_words.intersection(t_words)
 
-    return 1 if overlap else 0
+    # Require at least 1 meaningful overlap word
+    if overlap:
+        return 1
+
+    return 0
 
 
 def precision_at_k(query, k=5):
     results = recommend(query, k)
-    categories  = detect_categories(query)
+    query_cats = detect_categories(query)
 
     relevant = 0
-
     for item in results:
-        if is_relevant(query, item):
-            relevant += 1
+        relevant += is_relevant(query, item, query_cats)
 
     return relevant / k
 
