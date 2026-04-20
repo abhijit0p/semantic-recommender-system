@@ -1,3 +1,5 @@
+import sys
+import os
 import json
 import joblib
 import numpy as np
@@ -15,7 +17,8 @@ texts = [
 
 # Step 1: Embed content
 embeddings = embed_texts(texts)
-lrmodel = joblib.load("model.pkl")
+MODEL_PATH = os.path.join(os.path.dirname(__file__), "..", "model.pkl")
+lrmodel = joblib.load(MODEL_PATH)
 # Step 2: Build index
 dim = embeddings.shape[1]
 index = VectorIndex(dim)
@@ -51,10 +54,13 @@ def detect_categories(query):
 
     return categories
 
-
+"""
+Return top-k recommended items based on semantic + ML ranking.
+"""
 def recommend(query, k=5):
     query_vec = embed_texts([query])
-    D, I = index.search(query_vec, 20)
+    CANDIDATE_K = 20
+    D, I = index.search(query_vec, CANDIDATE_K)
 
     query_categories = detect_categories(query)
 
@@ -85,11 +91,11 @@ def recommend(query, k=5):
 
 
 if __name__ == "__main__":
-    query = "Spartan: Ultimate Team Challenge"
-
+    query = sys.argv[1] if len(sys.argv) > 1 else "cooking show"
     recs = recommend(query)
 
-    print(f"\nQuery: {query}\n")
+    print(f"\nQuery: {query}")
+    print("="*50)
     print("Recommendations:\n")
 
     for r in recs:
