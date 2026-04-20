@@ -21,21 +21,6 @@ dim = embeddings.shape[1]
 index = VectorIndex(dim)
 index.add(embeddings)
 
-def precision_at_k(query, k=5):
-    results = recommend(query, k)
-    query_category = detect_category(query)
-
-    relevant = 0
-
-    for item in results:
-        if is_relevant(query_category, item):
-            relevant += 1
-
-    return relevant / k
-
-def is_relevant(query_category, item):
-    return item.get("category") == query_category
-
 STOPWORDS = {"show", "series", "video", "videos"}
 
 def title_overlap(query, title):
